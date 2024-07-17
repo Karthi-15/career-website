@@ -16,7 +16,7 @@
 </head>
 <body>
   <div class="container">
-    <h1 class="text-center mt-2 mb-4"">NEXTAECH CAREERS</h1>
+    <h1 class="text-center mt-2 mb-4"">{{company_name}} CAREERS</h1>
     <img id="banner" src="/static/banner.jpeg" alt="!!NOT FOUND!!" class="img-fluid">
     <h2 class="text-center mt-2 mb-4"">About NexaTech</h2>
     <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lacinia, tortor at aliquam feugiat, 
@@ -29,10 +29,14 @@
         cursus dolor arcu in ligula.
     </p>
   <h2 class="text-center mt-2 mb-4">Open Positions</h2>
-  <p>ToDo show jobs here</p>
+  <div >
+    {% for job in jobs %}
+      {% include 'jobitem.html' %}
+    {%endfor%}
+  </div>
       <div class="text-center">
   <button class="btn btn-primary btn-lg"">Contact us</button>
-        <p class="mt-4"">Copyright NexaTech 2024</p>
+        <p class="mt-4">Copyright NexaTech 2024</p>
       </div>
   </div>
 </body>

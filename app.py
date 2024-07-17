@@ -1,15 +1,39 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 
-# Create a Flask application instance
 app = Flask(__name__)
 
+JOBS = [{
+    'id': 1,
+    'title': 'Data Analyst',
+    'location': 'Bengaluru, India',
+    'salary': 'Rs. 10,00,000'
+}, {
+    'id': 2,
+    'title': 'Data scientist',
+    'location': 'Delhi, India',
+    'salary': 'Rs. 15,00,000'
+}, {
+    'id': 3,
+    'title': 'Front Engineer',
+    'location': 'Chennai, India',
+    'salary': 'Rs. 12,00,000'
+}, {
+    'id': 4,
+    'title': 'Backend Engineer',
+    'location': 'Hyderabad, India',
+    'salary': 'Rs. 20,00,000'
+}]
 
-# Define a route and its handler
+
 @app.route('/')
-def hello():
-    return render_template('home.html')
+def hello_nexatech():
+    return render_template('home.html', jobs=JOBS, company_name='NEXATECH')
 
 
-# Run the application if this script is executed directly
+@app.route("/api/jobs")
+def listjobs():
+    return jsonify(JOBS)
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
